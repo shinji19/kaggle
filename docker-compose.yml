@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  app:
+    build: ./
+    working_dir: /opt/kaggle
+    volumes:
+      - ./:/opt/kaggle
+    tty: true
