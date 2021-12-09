@@ -1,8 +1,12 @@
 version: '3.8'
 services:
-  app:
-    build: ./
-    working_dir: /opt/kaggle
+  notebook:
+    image: jupyter/scipy-notebook:python-3.9.7
+    ports:
+      - "8889:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
     volumes:
-      - ./:/opt/kaggle
-    tty: true
+      - ./:/home/jovyan/work
+      - ./kaggle.json:/home/jovyan/.kaggle/kaggle.json
+    command: start-notebook.sh --NotebookApp.token=''
